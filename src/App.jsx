@@ -27,7 +27,7 @@ const App = () => {
         btns[c[0]].innerHTML === btns[c[1]].innerHTML &&
         btns[c[0]].innerHTML === btns[c[2]].innerHTML
       ) {
-        setWinnerMsg(`${player ? "X" : "O"} Is Winner`);
+        setWinnerMsg(`${btns[c[0]].innerHTML} Is Winner`);
         btns.forEach((btn) => {
           btn.disabled = true;
           btn.style.backgroundColor = "rgb(30 41 59)";
