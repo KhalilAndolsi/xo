@@ -2,7 +2,7 @@ import { useState } from "react";
 
 const App = () => {
   const [player, setPlayer] = useState(true);
-  const [bot, setBot] = useState(false);
+  const [bot, setBot] = useState(true);
   const [winnerMsg, setWinnerMsg] = useState("");
   const [x, setX] = useState(0);
   const [y, setY] = useState(0);
@@ -70,20 +70,20 @@ const App = () => {
       btn.style.backgroundColor = "";
       btn.style.color = "";
     });
-    setPlayer(true)
+    setPlayer(true);
   };
 
   const botPlayer = () => {
     const btns = [...document.querySelectorAll(".btns .btn")].filter(
-      (btn) => btn.innerHTML === ""
-    );
-    if (btns) {
-      var randomNum = Math.floor(Math.random() * btns.length);
-      if (btns[randomNum]) {
-        btns[randomNum].innerHTML = player ? "O" : "X";
-        checkWiner();
-        checkDraw();
-        setPlayer(player);
+      (btn) => btn.innerHTML === "" && !btn.disabled
+      );
+      if (btns) {
+        var randomNum = Math.floor(Math.random() * btns.length);
+        if (btns[randomNum]) {
+          btns[randomNum].innerHTML = player ? "O" : "X";
+          setPlayer(player);
+          checkWiner();
+          checkDraw();
       }
     }
   };
